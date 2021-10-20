@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Note } from '../note';
-import { NoteService } from '../note.service';
-import { DailyNoteService } from '../daily-note.service';
+import { Note } from '../interfaces/note';
+import { NoteService } from '../services/note.service';
+import { DailyNoteService } from '../services/daily-note.service';
 
 @Component({
   selector: 'app-daily-note',

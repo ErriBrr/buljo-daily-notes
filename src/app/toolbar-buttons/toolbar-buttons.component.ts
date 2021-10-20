@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ExportCsvService } from '../export-csv.service';
-import { Note } from '../note';
-import { NoteService } from '../note.service';
+import { ExportCsvService } from '../services/export-csv.service';
+import { Note } from '../interfaces/note';
+import { NoteService } from '../services/note.service';
 
 @Component({
   selector: 'app-toolbar-buttons',

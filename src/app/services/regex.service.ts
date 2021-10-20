@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BuljoLine } from './buljo-line';
-import { BuljoMarkup } from './buljo-markup';
+import { BuljoLine } from '../interfaces/buljo-line';
+import { BuljoMarkup } from '../interfaces/buljo-markup';
 
 @Injectable({
   providedIn: 'root'

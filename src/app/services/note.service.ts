@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Note } from './note';
-import { NOTES } from './mock-notes';
+import { Note } from '../interfaces/note';
+import { NOTES } from '../constants/mock-notes';
 
 @Injectable({
   providedIn: 'root'

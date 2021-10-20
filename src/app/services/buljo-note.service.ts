@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { BuljoLine } from './buljo-line';
-import { DictSvg } from './dict';
-import { ICONS } from './icons-svg';
-import { COLORS } from './icons-colors';
+import { BuljoLine } from '../interfaces/buljo-line';
+import { DictSvg } from '../interfaces/dict';
+import { ICONS } from '../constants/icons-svg';
+import { COLORS } from '../constants/icons-colors';
 import { RegexService } from './regex.service';
 
 @Injectable({

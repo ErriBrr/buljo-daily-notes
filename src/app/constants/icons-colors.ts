@@ -1,4 +1,4 @@
-import { Dict } from "./dict";
+import { Dict } from "../interfaces/dict";
 
 export const COLORS: Dict = {
     'b': 'dodgerblue',

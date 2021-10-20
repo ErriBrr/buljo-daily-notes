@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Note } from './note';
+import { Note } from '../interfaces/note';
 
 import { saveAs } from 'file-saver';
 import { unparse } from 'papaparse';
