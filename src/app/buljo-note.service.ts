@@ -14,15 +14,7 @@ import { RegexService } from './regex.service';
 export class BuljoNoteService {
   svgList(): Svg[] {
     return ICONS;
-  } 
-
-  /*replaceByIcon(line:string, icon:Svg, color:string): string {
-    let buljoLine: string;
-    buljoLine = MAT_ICON.replace(MARK_NAME_COLOR, color).replace(MARK_NAME_ICON, icon.name);
-    buljoLine += line;
-    buljoLine += '\n';
-    return buljoLine;
-  }*/
+  }
 
   generateBuljoLines(text:string): BuljoLine[] {
     let buljoLines : BuljoLine[] = [];
