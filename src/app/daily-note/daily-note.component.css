@@ -1,0 +1,37 @@
+/*label {
+    color: #435960;
+    font-weight: bold;
+  }
+  input {
+    font-size: 1em;
+    padding: .5rem;
+  }*/
+  .note-form {
+    margin: 5em 0 0 3em;
+  }
+  textarea {
+    height: 180px;
+  }
+  /*
+  button {
+    margin-top: 20px;
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }*/
+  p {
+    white-space: pre-line;
+  }
+  .right-align {
+      float:right;
+      margin-right: 5em;
+    }

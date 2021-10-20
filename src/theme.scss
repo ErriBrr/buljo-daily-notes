@@ -1,0 +1,37 @@
+@use '~@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$brown-palette, 300);
+$my-accent: mat.define-palette(mat.$deep-orange-palette, 300);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ )
+));
+
+$my-theme-2: mat.define-light-theme((
+ color: (
+   primary: $my-accent,
+   accent: $my-primary,
+ )
+));
+
+@function mat-set-background($theme, $backgroundColor) {
+    $palette-color : map-get($theme, color);
+    $background: map-get($palette-color, background);
+    $background: map_merge($background, (background: $backgroundColor));
+    $palette-color: map_merge($palette-color, (background: $background));
+    @return map_merge($theme, (color: $palette-color));
+  }
+$background-color: #a71212;
+$my-theme: mat-set-background($my-theme, $background-color);
+
+@include mat.all-component-themes($my-theme);
+@include mat.toolbar-theme($my-theme);
+@include mat.button-theme($my-theme);
+@include mat.card-theme($my-theme);
+@include mat.progress-bar-theme($my-theme-2);
+@include mat.core($my-theme);

@@ -1,0 +1,26 @@
+<ul class="notes">
+  <div *ngFor="let note of notes.reverse()" (click)="onSelect(note)" [class.selected]="note === selectedNote">
+    <div *ngIf="!note.archive">
+      <a routerLink="/notes/{{note.date.toDateString()}}">
+      <mat-card style="max-width: 500px; margin-bottom: 20px;">
+        <mat-card-subtitle>{{this.formatDate(note)}}</mat-card-subtitle>
+        <mat-card-title>{{note.title}}</mat-card-title>
+        <mat-card-content>
+          <p>{{note.text}}</p>
+        </mat-card-content>
+        <!--mat-divider inset></mat-divider>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions-->
+        <div *ngIf="isTodayNote(note)">
+          <mat-card-footer>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </mat-card-footer>
+        </div>
+      </mat-card>
+      </a>
+    </div>
+  </div>
+</ul>
+<app-buttons></app-buttons>

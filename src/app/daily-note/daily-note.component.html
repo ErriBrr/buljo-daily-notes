@@ -1,0 +1,19 @@
+<div *ngIf="note" class="note-form">
+    <div *ngIf="this.isTodayNote(note)">
+        <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>title</mat-label>
+                <input matInput id="name" [(ngModel)]="note.title" placeholder="name" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div><span>date: </span>{{this.formatDate(note)}}</div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Your daily note</mat-label>
+                <textarea matInput [(ngModel)]="note.text" [ngModelOptions]="{standalone: true}"></textarea>
+            </mat-form-field>
+        </form>
+    </div>
+    <div>
+        <app-detail-note [inputNote]="note"></app-detail-note>
+    </div>
+</div>
+<button mat-raised-button color="primary" (click)="goBack()" class="right-align">go back</button>
