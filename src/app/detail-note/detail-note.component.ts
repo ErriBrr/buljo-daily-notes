@@ -3,11 +3,11 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material/icon';
 
 import { Note } from '../note';
-import { Svg } from '../svg';
 import { BuljoLine } from '../buljo-line';
 import { DailyNoteService } from '../daily-note.service';
 import { NoteService } from '../note.service';
 import { BuljoNoteService } from '../buljo-note.service';
+import { DictSvg } from '../dict';
 
 
 @Component({
@@ -38,10 +38,10 @@ export class DetailNoteComponent implements OnInit {
     private dailyNoteService: DailyNoteService,
     private noteService: NoteService,
     private buljoNoteService: BuljoNoteService,
-    private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer
     ) {
-      const icons: Svg[] = this.buljoNoteService.svgList();
+      const icons: DictSvg = this.buljoNoteService.svgList();
       for (let e in icons ) {
         iconRegistry.addSvgIconLiteral(icons[e].name, sanitizer.bypassSecurityTrustHtml(icons[e].html));
       }

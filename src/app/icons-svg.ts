@@ -1,14 +1,4 @@
-import { Svg } from './svg';
-
-export const MARK_UP_SQUARE = "[] ";
-export const MARK_UP_SQUARE_FILL = "[.]";
-export const MARK_UP_EXCLAMATION = "[!]";
-export const MARK_UP_TRIANGLE = "[^]";
-export const MARK_UP_ARROW = "-> ";
-export const MARK_UP_ROUND = "() ";
-export const MARK_UP_ROUND_FILL = "(.)";
-export const MARK_UP_ROUND_CHECK = "(x)";
-export const MARK_UP_SMILEY = ":-)";
+import { DictSvg } from './dict';
 
 const SQUARE_SVG = `<svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square" viewBox="0 0 16 16">
 <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
@@ -46,60 +36,49 @@ const LIGHTNING_FILL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" h
 <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
 </svg>`;
 
-export const ICONS: Svg[] = [
-    {
+export const ICONS: DictSvg = {
+    "[]": {
       name: "square",
-      html: SQUARE_SVG,
-      mark_up: MARK_UP_SQUARE
+      html: SQUARE_SVG
     },
-    {
+    "[.]": {
       name: "square-fill",
-      html: SQUARE_FILL_SVG,
-      mark_up: MARK_UP_SQUARE_FILL
+      html: SQUARE_FILL_SVG
     },
-    {
+    "[!]": {
       name: "exclamation",
-      html: EXCLAMATION_SVG,
-      mark_up: MARK_UP_EXCLAMATION
+      html: EXCLAMATION_SVG
     },
-    {
+    "[^]": {
       name: "triangle",
-      html: TRIANGLE_FILL_SVG,
-      mark_up: MARK_UP_TRIANGLE
+      html: TRIANGLE_FILL_SVG
     },
-    {
+    '': {
       name: "arrow-right",
-      html: ARROW_RIGHT_SVG,
-      mark_up: ''
+      html: ARROW_RIGHT_SVG
     },
-    {
+    "->": {
       name: "forward",
-      html: FORWARD_FILL_SVG,
-      mark_up: MARK_UP_ARROW
+      html: FORWARD_FILL_SVG
     },
-    {
+    "()": {
       name: "round",
-      html: ROUND_SVG,
-      mark_up: MARK_UP_ROUND
+      html: ROUND_SVG
     },
-    {
+    "(x)": {
       name: "round-check",
-      html: ROUND_CHECK_SVG,
-      mark_up: MARK_UP_ROUND_CHECK
+      html: ROUND_CHECK_SVG
     },
-    {
+    "(.)": {
       name: "round-fill",
-      html: ROUND_FILL_SVG,
-      mark_up: MARK_UP_ROUND_FILL
+      html: ROUND_FILL_SVG
     },
-    {
+    ":-)": {
       name: "smiley",
-      html: SMILEY_SVG,
-      mark_up: MARK_UP_SMILEY
+      html: SMILEY_SVG
     },
-    {
+    'default': {
       name: "lightning",
-      html: LIGHTNING_FILL_SVG,
-      mark_up: 'default'
+      html: LIGHTNING_FILL_SVG
     }
-];
+};
