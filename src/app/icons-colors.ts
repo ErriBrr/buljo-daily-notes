@@ -1,10 +1,10 @@
 import { Dict } from "./dict";
 
 export const COLORS: Dict = {
-    'b': 'blue',
-    'r': 'red',
+    'b': 'dodgerblue',
+    'r': 'crimson',
     'g': 'lawngreen',
-    'y': 'yellow',
+    'y': 'gold',
     'a': 'aquamarine',
     'o': 'orange',
     'default': 'black'
