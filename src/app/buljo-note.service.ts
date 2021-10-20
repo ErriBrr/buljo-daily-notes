@@ -7,6 +7,9 @@ import { ICONS, MARK_UP_ARROW, MARK_UP_EXCLAMATION,
   MARK_UP_SQUARE, MARK_UP_SQUARE_FILL, MARK_UP_TRIANGLE } from './svg-icons';
 import { RegexService } from './regex.service';
 
+interface Color {
+  [key: string]: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +24,7 @@ export class BuljoNoteService {
     const splitText = text.replace('\r', '').split("\n");
     for (var i = 0; i < splitText.length; i++){
       let line = splitText[i];
-      let buljoLine: BuljoLine = {
-        markup: this.regexService.extractMarkUp(line),
-        text: ''
-      };
+      let buljoLine: BuljoLine = this.regexService.extractBuljoLine(line);
       switch(buljoLine.markup.color) {
         case 'b':
           buljoLine.markup.color = 'blue';
@@ -33,7 +33,7 @@ export class BuljoNoteService {
           buljoLine.markup.color = 'red';
           break;
         case 'g':
-          buljoLine.markup.color = 'green';
+          buljoLine.markup.color = 'lawngreen';
           break;
         case 'y':
           buljoLine.markup.color = 'yellow';
@@ -41,57 +41,50 @@ export class BuljoNoteService {
         case 'a':
           buljoLine.markup.color = 'aquamarine';
           break;
-        default:
+        case 'o':
           buljoLine.markup.color = 'orange';
+          break;
+        default:
+          buljoLine.markup.color = 'black';
       }
       switch(buljoLine.markup.icon) {
-        case MARK_UP_SQUARE: { 
-          buljoLine.text = line.slice(2, line.length);
+        case MARK_UP_SQUARE: {
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_SQUARE)!.name;
           break;
         }
-        case MARK_UP_SQUARE_FILL: { 
-          buljoLine.text = line.slice(3, line.length);
+        case MARK_UP_SQUARE_FILL: {
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_SQUARE_FILL)!.name;
           break; 
         } 
         case MARK_UP_EXCLAMATION: {
-          buljoLine.text = line.slice(3, line.length);
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_EXCLAMATION)!.name;
           break;
         }
         case MARK_UP_TRIANGLE: {
-          buljoLine.text = line.slice(3, line.length);
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_TRIANGLE)!.name;
           break;
         }
         case MARK_UP_ARROW: {
-          buljoLine.text = line.slice(2, line.length);
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_ARROW)!.name;
           break;
         }
         case MARK_UP_ROUND: {
-          buljoLine.text = line.slice(2, line.length);
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_ROUND)!.name;
           break;
         }
         case MARK_UP_ROUND_FILL: {
-          buljoLine.text = line.slice(3, line.length);
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_ROUND_FILL)!.name;
           break;
         }
         case MARK_UP_ROUND_CHECK: {
-          buljoLine.text = line.slice(3, line.length);
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_ROUND_CHECK)!.name;
           break;
         }
         case MARK_UP_SMILEY: {
-          buljoLine.text = line.slice(3, line.length);
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === MARK_UP_SMILEY)!.name;
           break;
         }
-        default: { 
-          buljoLine.text = " " + line;
+        default: {
           buljoLine.markup.icon = ICONS.find(e => e.mark_up === 'default')!.name;
           break; 
         } 
