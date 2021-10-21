@@ -2,12 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material/icon';
 
-import { Note } from '../interfaces/note';
-import { BuljoLine } from '../interfaces/buljo-line';
-import { DailyNoteService } from '../services/daily-note.service';
-import { NoteService } from '../services/note.service';
-import { BuljoNoteService } from '../services/buljo-note.service';
-import { DictSvg } from '../interfaces/dict';
+import { Note } from '../../interfaces/note';
+import { BuljoLine } from '../../interfaces/buljo-line';
+import { DailyNoteService } from '../../services/daily-note.service';
+import { NoteService } from '../../services/note.service';
+import { BuljoNoteService } from '../../services/buljo-note.service';
+import { DictSvg } from '../../interfaces/dict';
 
 
 @Component({

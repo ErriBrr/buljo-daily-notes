@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NotesComponent } from './notes/notes.component';
-import { DailyNoteComponent } from './daily-note/daily-note.component';
-import { ThumbButtonsComponent } from './thumb-buttons/thumb-buttons.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { DailyNoteComponent } from './components/daily-note/daily-note.component';
+import { ThumbButtonsComponent } from './components/thumb-buttons/thumb-buttons.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,10 +18,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DetailNoteComponent } from './detail-note/detail-note.component';
+import { DetailNoteComponent } from './components/detail-note/detail-note.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ToolbarButtonsComponent } from './toolbar-buttons/toolbar-buttons.component';
+import { ToolbarButtonsComponent } from './components/toolbar-buttons/toolbar-buttons.component';
 
 @NgModule({
   declarations: [

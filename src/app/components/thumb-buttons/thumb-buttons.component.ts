@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
-import { ExportCsvService } from '../services/export-csv.service';
-import { NoteService } from '../services/note.service';
-import { Note } from '../interfaces/note';
+import { ExportCsvService } from '../../services/export-csv.service';
+import { NoteService } from '../../services/note.service';
+import { Note } from '../../interfaces/note';
 
 const BI_PLUS_CIRCLE = `
 <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 16 16">
