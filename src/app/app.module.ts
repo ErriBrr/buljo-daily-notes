@@ -22,6 +22,7 @@ import { DetailNoteComponent } from './components/detail-note/detail-note.compon
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ToolbarButtonsComponent } from './components/toolbar-buttons/toolbar-buttons.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ToolbarButtonsComponent } from './components/toolbar-buttons/toolbar-bu
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

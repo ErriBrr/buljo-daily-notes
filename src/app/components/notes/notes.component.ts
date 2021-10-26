@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from '../../interfaces/note';
 import { NoteService } from '../../services/note.service';
 import { DailyNoteService } from '../../services/daily-note.service';
+import { BuljoNoteService } from 'src/app/services/buljo-note.service';
+import { BuljoLine } from 'src/app/interfaces/buljo-line';
 
 @Component({
   selector: 'app-notes',
@@ -28,9 +30,14 @@ export class NotesComponent implements OnInit {
     return this.dailyNoteService.isTodayNote(note);
   }
 
+  buljoLines(noteText: string): BuljoLine[] {
+    return  this.buljoNoteService.generateBuljoLines(noteText);
+  }
+
   constructor(
     private noteService: NoteService,
-    private dailyNoteService: DailyNoteService
+    private dailyNoteService: DailyNoteService,
+    private buljoNoteService: BuljoNoteService
   ) { }
 
   ngOnInit(): void {
