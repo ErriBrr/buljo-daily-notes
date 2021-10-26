@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # BuljoDailyNotes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
@@ -29,4 +29,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # buljo-daily-notes
 Buljo Diary Note App
->>>>>>> 8dee471 (Initial commit)
