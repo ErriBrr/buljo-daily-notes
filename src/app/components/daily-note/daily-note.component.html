@@ -1,6 +1,6 @@
 <!--div  class="in-center"-->
-<div *ngIf="note" class="note-form">
-    <div *ngIf="this.isTodayNote(note)">
+<div fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="note" class="note-form">
+    <div *ngIf="this.isTodayNote(note)" class="flex-div">
         <form class="example-form">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>title</mat-label>
@@ -13,7 +13,7 @@
             </mat-form-field>
         </form>
     </div>
-    <div>
+    <div class="flex-div">
         <app-detail-note [inputNote]="note"></app-detail-note>
     </div>
 </div>

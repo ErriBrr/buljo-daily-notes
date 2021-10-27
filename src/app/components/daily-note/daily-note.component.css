@@ -13,9 +13,14 @@ p {
 .right-align {
   float:right;
   margin-right: 5em;
+  margin-top: 10%;
 }
 .in-center {
   position: absolute;
   top: 10%;
   left: 50%;
+}
+.flex-div {
+  margin-left: 25%;
+  margin-top: 10%;
 }
