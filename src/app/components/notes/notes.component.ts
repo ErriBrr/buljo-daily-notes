@@ -4,6 +4,9 @@ import { NoteService } from '../../services/note.service';
 import { DailyNoteService } from '../../services/daily-note.service';
 import { BuljoNoteService } from 'src/app/services/buljo-note.service';
 import { BuljoLine } from 'src/app/interfaces/buljo-line';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DictSvg } from 'src/app/interfaces/dict';
 
 @Component({
   selector: 'app-notes',
@@ -37,8 +40,15 @@ export class NotesComponent implements OnInit {
   constructor(
     private noteService: NoteService,
     private dailyNoteService: DailyNoteService,
-    private buljoNoteService: BuljoNoteService
-  ) { }
+    private buljoNoteService: BuljoNoteService,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer
+    ) {
+      const icons: DictSvg = this.buljoNoteService.svgList();
+      for (let e in icons ) {
+        iconRegistry.addSvgIconLiteral(icons[e].name, sanitizer.bypassSecurityTrustHtml(icons[e].html));
+    }
+  };
 
   ngOnInit(): void {
     this.getNotes();
