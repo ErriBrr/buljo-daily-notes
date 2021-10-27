@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
   
   openDialog() {
-    this.dialog.open(DialogHomepageComponent);
+    this.dialog.open(DialogHomepageComponent,{width:'90%'});
   }
   
   ngOnInit(): void {

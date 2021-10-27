@@ -1,1 +1,36 @@
-<p>dialog-homepage works!</p>
+<h1 mat-dialog-title>Introduction to buljo notes</h1>
+<h2 mat-dialog-content>Try to write a buljo note.</h2>
+<br/>
+<h3>Colors </h3>
+<ul>
+    <li>'b' blue</li>
+    <li>'r' red</li>
+    <li>'g' green</li>
+    <li>'y' yellow</li>
+    <li>'a' alternative green</li>
+    <li>'o' orange</li>
+    <li>default is black </li>
+</ul>
+<h3>Icons </h3>
+<ul>
+  <li>'[]' square</li>
+  <li>'[.]' square fill</li>
+  <li>'[!]' exclamation road sign</li>
+  <li>'[^]' triangle</li>
+  <li>'->' right arrow</li>
+  <li>'()' round</li>
+  <li>'(x)' round check box</li>
+  <li>'(.)' round fill</li>
+  <li>':-)' smiley</li>
+  <li>default is lightning</li>
+</ul>
+<h4>Example : "o[^] You can try bellow"</h4>
+<form>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput id="example" [(ngModel)]="note.text" placeholder="example" [ngModelOptions]="{standalone: true}"/>
+    </mat-form-field>
+</form>
+<h2>{{note.text}}</h2>
+<div mat-dialog-actions class="right-align">
+  <button mat-button mat-dialog-close>Close</button>
+</div>
