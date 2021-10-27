@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailNoteComponent } from './components/detail-note/detail-note.component';
@@ -23,6 +24,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ToolbarButtonsComponent } from './components/toolbar-buttons/toolbar-buttons.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DialogHomepageComponent } from './components/dialog-homepage/dialog-homepage.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DailyNoteComponent,
     ThumbButtonsComponent,
     DetailNoteComponent,
-    ToolbarButtonsComponent
+    ToolbarButtonsComponent,
+    DialogHomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
