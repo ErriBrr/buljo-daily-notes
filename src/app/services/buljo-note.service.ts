@@ -14,7 +14,7 @@ export class BuljoNoteService {
     return ICONS;
   }
 
-  private generateBuljoLine(line:string): BuljoLine {
+  generateBuljoLine(line:string): BuljoLine {
     let buljoLine: BuljoLine = this.regexService.extractBuljoLine(line);
     // console.log(buljoLine.text + ' ' + buljoLine.markup.color + ' ' + buljoLine.markup.icon);
     buljoLine.markup.color = COLORS[buljoLine.markup.color];

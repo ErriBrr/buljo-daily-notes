@@ -30,7 +30,8 @@
         <input matInput id="example" [(ngModel)]="note.text" placeholder="example" [ngModelOptions]="{standalone: true}"/>
     </mat-form-field>
 </form>
-<h2>{{note.text}}</h2>
+<p><mat-icon style="color:{{getBuljoline().markup.color}};height:12px;width:12px;" svgIcon="{{getBuljoline().markup.icon}}" ></mat-icon>
+    {{getBuljoline().text}}</p>
 <div mat-dialog-actions class="right-align">
   <button mat-button mat-dialog-close>Close</button>
 </div>

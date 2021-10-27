@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BuljoLine } from 'src/app/interfaces/buljo-line';
 import { Note } from 'src/app/interfaces/note';
+import { BuljoNoteService } from 'src/app/services/buljo-note.service';
 
 @Component({
   selector: 'app-dialog-homepage',
@@ -14,7 +16,11 @@ export class DialogHomepageComponent implements OnInit {
     date: new Date()
   };
 
-  constructor() { }
+  getBuljoline(): BuljoLine {
+    return this.buljoNoteService.generateBuljoLine(this.note.text);
+  }
+
+  constructor(private buljoNoteService: BuljoNoteService) { }
 
   ngOnInit(): void {
   }
