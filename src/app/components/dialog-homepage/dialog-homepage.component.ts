@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { BuljoLine } from 'src/app/interfaces/buljo-line';
+import { DictSvg } from 'src/app/interfaces/dict';
 import { Note } from 'src/app/interfaces/note';
 import { BuljoNoteService } from 'src/app/services/buljo-note.service';
 
@@ -20,7 +23,15 @@ export class DialogHomepageComponent implements OnInit {
     return this.buljoNoteService.generateBuljoLine(this.note.text);
   }
 
-  constructor(private buljoNoteService: BuljoNoteService) { }
+  constructor(
+    private buljoNoteService: BuljoNoteService,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer) {
+    const icons: DictSvg = this.buljoNoteService.svgList();
+    for (let e in icons ) {
+      iconRegistry.addSvgIconLiteral(icons[e].name, sanitizer.bypassSecurityTrustHtml(icons[e].html));
+    } 
+  };
 
   ngOnInit(): void {
   }
