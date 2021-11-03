@@ -14,6 +14,12 @@ export class ToolbarButtonsComponent implements OnInit {
     this.noteService.getNotes().subscribe(notes => notesToExport = notes)
     this.importexportCsvService.exportCSV(notesToExport);
   }
+
+  importFile(e: any) {
+    if(e.target.files[0]) {
+      this.importexportCsvService.importCSV(e.target.files[0]);
+    }
+  }
   
   constructor(
     private importexportCsvService: ImportExportCsvService,

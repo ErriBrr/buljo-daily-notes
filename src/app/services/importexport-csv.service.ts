@@ -19,5 +19,14 @@ export class ImportExportCsvService {
     saveAs(fileObj);
   }
 
+  importCSV(file: File): Note[] {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      console.log(reader.result);
+    }
+    console.log(reader.readAsText(file))
+    return [];
+  }
+
   constructor() { }
 }
