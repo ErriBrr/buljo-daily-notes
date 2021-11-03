@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Note } from '../interfaces/note';
 
 // https://firstclassjs.com/persist-data-using-local-storage-and-angular/
 
@@ -10,7 +11,7 @@ export class LocalStorageService {
   constructor() {
     this.localStorage = window.localStorage;
   }
-  get(key: string): any {
+  get(key: string): Note[] | null {
     if (this.isLocalStorageSupported) {
       if (this.localStorage.getItem(key) != null) {
         return JSON.parse(this.localStorage.getItem(key)!);

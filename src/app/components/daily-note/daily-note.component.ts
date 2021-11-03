@@ -20,6 +20,7 @@ export class DailyNoteComponent implements OnInit {
   }
 
   goBack(): void {
+    this.noteService.majNote();
     this.location.back();
   }
 
