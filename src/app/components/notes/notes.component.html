@@ -1,19 +1,7 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid" class="notes" >
   <div *ngFor="let note of notes.reverse()" (click)="onSelect(note)" [class.selected]="note === selectedNote">
     <a *ngIf="!note.archive" routerLink="/notes/{{note.date.toDateString()}}">
-      <mat-card>
-        <mat-card-subtitle>{{this.formatDate(note)}}</mat-card-subtitle>
-        <mat-card-title>{{note.title}}</mat-card-title>
-        <mat-card-content>
-          <p *ngFor="let buljoLine of this.buljoLines(note.text)">
-              <mat-icon style="color:{{buljoLine.markup.color}};height:12px;width:12px;" svgIcon="{{buljoLine.markup.icon}}" ></mat-icon>
-              {{buljoLine.text}}
-          </p>
-        </mat-card-content>
-        <mat-card-footer *ngIf="isTodayNote(note)">
-          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-        </mat-card-footer>
-      </mat-card>
+      <app-detail-note [inputNote]="note" [isNotesView]="true" ></app-detail-note>
     </a>
   </div>
 </div>

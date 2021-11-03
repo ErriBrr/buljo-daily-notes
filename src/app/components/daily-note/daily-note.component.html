@@ -4,17 +4,17 @@
         <form class="example-form">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>title</mat-label>
-                <input matInput id="name" [(ngModel)]="note.title" placeholder="name" [ngModelOptions]="{standalone: true}">
+                <input matInput id="name" (input)="majNote()" [(ngModel)]="note.title" placeholder="name" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <div><span>date: </span>{{this.formatDate(note)}}</div>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Your daily note</mat-label>
-                <textarea matInput [(ngModel)]="note.text" [ngModelOptions]="{standalone: true}"></textarea>
+                <textarea matInput (input)="majNote()" [(ngModel)]="note.text" [ngModelOptions]="{standalone: true}"></textarea>
             </mat-form-field>
         </form>
     </div>
     <div class="flex-div">
-        <app-detail-note [inputNote]="note"></app-detail-note>
+        <app-detail-note [inputNote]="note" [isNotesView]="false" ></app-detail-note>
     </div>
 </div>
 <button mat-raised-button color="primary" (click)="goBack()" class="right-align">go back</button>

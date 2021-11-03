@@ -101,7 +101,7 @@ describe('RegexService', () => {
   });
   it('should find nothing 4', () => {
     const result = service.extractMarkUp(test14);
-    expect(result.color).toEqual('');
-    expect(result.icon).toEqual('');
+    expect(result.color).toEqual('default');
+    expect(result.icon).toEqual('default');
   });
 });

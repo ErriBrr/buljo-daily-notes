@@ -18,19 +18,13 @@ export class NotesComponent implements OnInit {
 
   notes: Note[] = [] ;
   selectedNote?: Note;
+  
   onSelect(note: Note): void {
     this.selectedNote = note;
   }
+
   getNotes(): void {
     this.noteService.getNotes().subscribe(notes => this.notes = notes);
-  }
-
-  formatDate(note: Note): string {
-    return this.dailyNoteService.formatDate(note.date);
-  }
-
-  isTodayNote(note: Note): boolean {
-    return this.dailyNoteService.isTodayNote(note);
   }
 
   buljoLines(noteText: string): BuljoLine[] {

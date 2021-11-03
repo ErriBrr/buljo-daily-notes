@@ -18,16 +18,21 @@ import { DictSvg } from '../../interfaces/dict';
 export class DetailNoteComponent implements OnInit {
 
   @Input() inputNote?: Note;
+  @Input() isNotesView!: boolean;
   detailNote: Note | undefined;
 
   getNote(input: Note): void {
     const date = input.date.toDateString();
-    console.log(date);
+    // console.log(date);
     this.noteService.getNote(date).subscribe(n => this.detailNote = n);
   }
 
   formatDate(note: Note): string {
     return this.dailyNoteService.formatDate(note.date);
+  }
+
+  isTodayNote(note: Note): boolean {
+    return this.isNotesView && this.dailyNoteService.isTodayNote(note);
   }
 
   buljoLines(noteText: string): BuljoLine[] {

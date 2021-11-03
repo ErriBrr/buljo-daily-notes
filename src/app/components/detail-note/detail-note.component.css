@@ -3,12 +3,21 @@ p {
   }
 
 mat-card {
-    min-height: 220px;
-    width: 220px;
-    margin-top: 50px;
-    margin-bottom: 20px;
+  height: 200px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 mat-card-content {
-  overflow-wrap: break-word;
+height: 135px;
+width: 220px;
+max-height: 135px;
+overflow: scroll;
+overflow-x: hidden;
+overflow-y: auto;
+}
+mat-card-title {
+height: 20px;
 }

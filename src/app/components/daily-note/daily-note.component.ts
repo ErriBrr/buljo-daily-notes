@@ -19,6 +19,10 @@ export class DailyNoteComponent implements OnInit {
     this.noteService.getNote(date).subscribe(note => this.note = note);
   }
 
+  majNote(): void {
+    this.noteService.majNote();
+  }
+
   goBack(): void {
     this.location.back();
   }

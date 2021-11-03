@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogHomepageComponent } from './components/dialog-homepage/dialog-homepage.component';
+import { LocalStorageService } from './services/local-storage.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
