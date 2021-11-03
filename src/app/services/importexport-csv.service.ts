@@ -8,7 +8,7 @@ import { unparse } from 'papaparse';
 @Injectable({
   providedIn: 'root'
 })
-export class ExportCsvService {
+export class ImportExportCsvService {
   exportCSV(notes: Note[]): void {
     // const text = JSON.stringify(notes).replace(/},{/g, "},\n{");
     var csv_data = unparse(notes, {

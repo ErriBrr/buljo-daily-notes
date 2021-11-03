@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExportCsvService } from '../../services/export-csv.service';
+import { ImportExportCsvService } from '../../services/importexport-csv.service';
 import { Note } from '../../interfaces/note';
 import { NoteService } from '../../services/note.service';
 
@@ -12,11 +12,11 @@ export class ToolbarButtonsComponent implements OnInit {
   exportCsvToFile(): void {
     let notesToExport:Note[] = [];
     this.noteService.getNotes().subscribe(notes => notesToExport = notes)
-    this.exportCsvService.exportCSV(notesToExport);
+    this.importexportCsvService.exportCSV(notesToExport);
   }
   
   constructor(
-    private exportCsvService: ExportCsvService,
+    private importexportCsvService: ImportExportCsvService,
     private noteService: NoteService
   ) { }
 
