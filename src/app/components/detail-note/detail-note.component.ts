@@ -18,6 +18,7 @@ import { DictSvg } from '../../interfaces/dict';
 export class DetailNoteComponent implements OnInit {
 
   @Input() inputNote?: Note;
+  @Input() isNotesView!: boolean;
   detailNote: Note | undefined;
 
   getNote(input: Note): void {
@@ -28,6 +29,10 @@ export class DetailNoteComponent implements OnInit {
 
   formatDate(note: Note): string {
     return this.dailyNoteService.formatDate(note.date);
+  }
+
+  isTodayNote(note: Note): boolean {
+    return this.isNotesView && this.dailyNoteService.isTodayNote(note);
   }
 
   buljoLines(noteText: string): BuljoLine[] {

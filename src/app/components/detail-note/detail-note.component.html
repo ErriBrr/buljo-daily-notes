@@ -1,12 +1,15 @@
 <div *ngIf="detailNote">
-    <mat-card style="max-width: 200px; margin-bottom: 20px;">
+    <mat-card>
         <mat-card-subtitle>{{this.formatDate(detailNote)}}</mat-card-subtitle>
         <mat-card-title>{{detailNote.title}}</mat-card-title>
         <mat-card-content>
-            <p *ngFor="let buljoLine of this.buljoLines(detailNote.text)">
-                <mat-icon style="color:{{buljoLine.markup.color}};height:12px;width:12px;" svgIcon="{{buljoLine.markup.icon}}" ></mat-icon>
-                {{buljoLine.text}}
-            </p>
+          <p *ngFor="let buljoLine of this.buljoLines(detailNote.text)">
+              <mat-icon style="color:{{buljoLine.markup.color}};height:12px;width:12px;" svgIcon="{{buljoLine.markup.icon}}" ></mat-icon>
+              {{buljoLine.text}}
+          </p>
         </mat-card-content>
-    </mat-card>
+        <mat-card-footer *ngIf="isTodayNote(detailNote)">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
 </div>
