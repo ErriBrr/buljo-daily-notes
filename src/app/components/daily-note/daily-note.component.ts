@@ -14,7 +14,7 @@ export class DailyNoteComponent implements OnInit {
   note: Note | undefined;
 
   getNote(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = String(this.route.snapshot.paramMap.get('id'));
     this.noteService.getNoteById(id).subscribe(note => this.note = note);
   }
 

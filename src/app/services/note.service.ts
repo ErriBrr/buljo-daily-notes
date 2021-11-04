@@ -12,6 +12,7 @@ export class NoteService {
   private localStorageService = new LocalStorageService;
   private importexportCsvService = new ImportExportCsvService;
   private notes: Note[] = [];
+  private idsList : string[] = [];
 
   delete(note: Note): void {
     //this.notes = this.notes.filter(obj => obj !== note);
@@ -28,10 +29,30 @@ export class NoteService {
     return of(this.notes);
   }
 
+  private generateId(length: number): string {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+  }
+
+  private askId(): string {
+    let id = '';
+    while (this.idsList.includes(id)) {
+      id = this.generateId(10);
+    }
+    this.idsList.push(id);
+    return id;
+  }
+
   getLocalStorageNotes(): void {
-    let id : number = 0;
+    this.idsList = [];
+    this.idsList.push('');
     this.notes = this.localStorageService.get('notes')!.map(item => item = {
-      id: id++,
+      id: this.askId(),
       title: item.title,
       date: new Date(item.date),
       archive: item.archive,
@@ -63,7 +84,7 @@ export class NoteService {
     }
   }
 
-  getNoteById(id: number): Observable<Note> {
+  getNoteById(id: string): Observable<Note> {
     if (!id) {
       this.createNewTodayNote();
     }
