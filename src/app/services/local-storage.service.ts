@@ -27,12 +27,10 @@ export class LocalStorageService {
     }
     return false;
   }
-  add(key: string, value: any): boolean {
-    if (this.isLocalStorageSupported) {
-      this.set(key, this.get(key)?.concat(value));
-      return true;
-    }
-    return false;
+  add(key: string, value: Note[]): boolean {
+    const getLocalValue = this.get(key);
+    const newValue: Note[] | null = getLocalValue!.concat(value) ? getLocalValue : value;
+    return this.set(key, newValue);
   }
   remove(key: string): boolean {
     if (this.isLocalStorageSupported) {
