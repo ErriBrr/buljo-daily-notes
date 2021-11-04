@@ -1,6 +1,9 @@
 <div class="md-fab-bottom-right2">
-    <button routerLink="/notes/{{todayDate()}}" mat-mini-fab color="primary">
+    <button *ngIf="!type" routerLink="/notes/{{todayDate()}}" mat-mini-fab color="primary">
         <!--mat-icon svgIcon="bi-plus-circle" aria-hidden="false" aria-label="Example thumbs up SVG icon" class="vertical-align-icon"></mat-icon-->
         <p style="font-size:30px">+</p>
+    </button>
+    <button *ngIf="type && type=='goback'" (click)="goBack()" mat-mini-fab color="primary">
+        <mat-icon aria-hidden="false" >arrow_back</mat-icon>
     </button>
 </div>

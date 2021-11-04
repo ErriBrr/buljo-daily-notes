@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { Note } from '../../interfaces/note';
 import { NoteService } from '../../services/note.service';
@@ -23,10 +22,6 @@ export class DailyNoteComponent implements OnInit {
     this.noteService.majNote();
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
   isTodayNote(note: Note): boolean {
     return this.dailyNoteService.isTodayNote(note);
   }
@@ -38,8 +33,7 @@ export class DailyNoteComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private noteService: NoteService,
-    private dailyNoteService: DailyNoteService,
-    private location: Location
+    private dailyNoteService: DailyNoteService
   ) { }
 
   ngOnInit(): void {
