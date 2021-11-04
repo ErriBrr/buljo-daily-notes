@@ -24,7 +24,7 @@ export class DetailNoteComponent implements OnInit {
   getNote(input: Note): void {
     const date = input.date.toDateString();
     // console.log(date);
-    this.noteService.getNote(date).subscribe(n => this.detailNote = n);
+    this.noteService.getNoteByDate(date).subscribe(n => this.detailNote = n);
   }
 
   formatDate(note: Note): string {

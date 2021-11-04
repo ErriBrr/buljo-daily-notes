@@ -29,7 +29,9 @@ export class NoteService {
   }
 
   getLocalStorageNotes(): void {
+    let id : number = 0;
     this.notes = this.localStorageService.get('notes')!.map(item => item = {
+      id: id++,
       title: item.title,
       date: new Date(item.date),
       archive: item.archive,
@@ -61,7 +63,15 @@ export class NoteService {
     }
   }
 
-  getNote(date: string): Observable<Note> {
+  getNoteById(id: number): Observable<Note> {
+    if (!id) {
+      this.createNewTodayNote();
+    }
+    const note = this.notes.find(n => n.id === id)!;
+    return of(note);
+  }
+
+  getNoteByDate(date: string): Observable<Note> {
     if (date === new Date().toDateString()) {
       this.createNewTodayNote();
     }

@@ -5,7 +5,7 @@ import { DailyNoteComponent } from './components/daily-note/daily-note.component
 
 const routes: Routes = [
   { path: '', redirectTo: '/notes', pathMatch: 'full' },
-  { path: 'notes/:date', component: DailyNoteComponent },
+  { path: 'notes/:id', component: DailyNoteComponent },
   { path: 'notes', component: NotesComponent }
 ];
 
