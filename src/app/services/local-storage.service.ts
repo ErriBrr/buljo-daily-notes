@@ -27,6 +27,13 @@ export class LocalStorageService {
     }
     return false;
   }
+  add(key: string, value: any): boolean {
+    if (this.isLocalStorageSupported) {
+      this.set(key, this.get(key)?.concat(value));
+      return true;
+    }
+    return false;
+  }
   remove(key: string): boolean {
     if (this.isLocalStorageSupported) {
       this.localStorage.removeItem(key);
