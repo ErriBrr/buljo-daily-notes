@@ -23,6 +23,9 @@ export class NotesComponent implements OnInit {
   getNotes(): void {
     this.noteService.getNotes().subscribe(notes => this.notes = notes);
   }
+  deleteNote(note: Note): void {
+    this.noteService.delete(note);
+  }
 
   constructor(
     private noteService: NoteService,

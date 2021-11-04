@@ -13,6 +13,14 @@ export class NoteService {
   private importexportCsvService = new ImportExportCsvService;
   private notes: Note[] = [];
 
+  delete(note: Note): void {
+    //this.notes = this.notes.filter(obj => obj !== note);
+    // ALTERNATIVE :
+    note.archive = true;
+    this.majNote();
+    //window.location.reload();
+  }
+
   getNotes(): Observable<Note[]> {
     if (this.localStorageService.get('notes')){
       this.getLocalStorageNotes();
