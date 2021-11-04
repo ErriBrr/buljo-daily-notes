@@ -3,5 +3,8 @@
 </button>
 <mat-menu #aboveMenu="matMenu">
     <button mat-menu-item (click)=exportCsvToFile()>Export</button>
-    <button mat-menu-item>Import</button>
+    <button mat-menu-item [matMenuTriggerFor]="nestedMenu">Import</button>
+</mat-menu>
+<mat-menu #nestedMenu="matMenu">
+    <input mat-menu-item type='file' (change)="importFile($event)">
 </mat-menu>

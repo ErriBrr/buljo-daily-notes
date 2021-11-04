@@ -27,6 +27,11 @@ export class LocalStorageService {
     }
     return false;
   }
+  add(key: string, value: Note[]): boolean {
+    const getLocalValue = this.get(key);
+    const newValue: Note[] = getLocalValue ? getLocalValue.concat(value) : value;
+    return this.set(key, newValue);
+  }
   remove(key: string): boolean {
     if (this.isLocalStorageSupported) {
       this.localStorage.removeItem(key);
