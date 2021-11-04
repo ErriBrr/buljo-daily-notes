@@ -29,7 +29,7 @@ export class LocalStorageService {
   }
   add(key: string, value: Note[]): boolean {
     const getLocalValue = this.get(key);
-    const newValue: Note[] | null = getLocalValue!.concat(value) ? getLocalValue : value;
+    const newValue: Note[] = getLocalValue ? getLocalValue.concat(value) : value;
     return this.set(key, newValue);
   }
   remove(key: string): boolean {

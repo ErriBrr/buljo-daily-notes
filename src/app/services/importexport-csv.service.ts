@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-
-import { Note } from '../interfaces/note';
-
 import { saveAs } from 'file-saver';
 import { unparse, parse } from 'papaparse';
+
+import { Note } from '../interfaces/note';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -33,16 +32,18 @@ export class ImportExportCsvService {
     this.localStorageService.add('notes', notesJson);
   }
 
-  importCSV(file: File): void {
+  importCSV(file: File, callback: () => void) {
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = () => {
       const csvJson: any[] = parse(reader.result!.toString(), {
         delimiter: ";",
         newline: "\n",
-        header: true
+        header: true,
+        dynamicTyping: true
       }).data;
       this.addToLocalStorage(csvJson);
-    }
+      callback();
+    };
     reader.readAsText(file);
   }
 

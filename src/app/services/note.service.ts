@@ -2,26 +2,32 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { Note } from '../interfaces/note';
-// import { NOTES } from '../constants/mock-notes';
 import { LocalStorageService } from './local-storage.service';
+import { ImportExportCsvService } from './importexport-csv.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
   private localStorageService = new LocalStorageService;
+  private importexportCsvService = new ImportExportCsvService;
   private notes: Note[] = [];
 
   getNotes(): Observable<Note[]> {
     if (this.localStorageService.get('notes')){
-      this.notes = this.localStorageService.get('notes')!.map(item => item = {
-        title: item.title,
-        date: new Date(item.date),
-        archive: item.archive,
-        text: item.text
-      });
+      this.getLocalStorageNotes();
     }
     return of(this.notes);
+  }
+
+  getLocalStorageNotes(): void {
+    console.log('test 3');
+    this.notes = this.localStorageService.get('notes')!.map(item => item = {
+      title: item.title,
+      date: new Date(item.date),
+      archive: item.archive,
+      text: item.text
+    });
   }
 
   pushNewNote(date: Date): void {
@@ -54,6 +60,15 @@ export class NoteService {
     }
     const note = this.notes.find(n => n.date.toDateString() === date)!;
     return of(note);
+  }
+
+  importNotes(file: File): void {
+    this.importexportCsvService.importCSV(file, () => window.location.reload());
+  }
+
+  exportNotes(): void {
+    this.getLocalStorageNotes();
+    this.importexportCsvService.exportCSV(this.notes);
   }
 
   constructor() { }
