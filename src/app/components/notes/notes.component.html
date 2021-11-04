@@ -1,7 +1,7 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid" class="notes" >
   <div *ngFor="let note of notes.reverse()" (click)="onSelect(note)" [class.selected]="note === selectedNote">
     <a *ngIf="!note.archive" routerLink="/notes/{{note.date.toDateString()}}">
-      <app-detail-note [inputNote]="note" [isNotesView]="true" ></app-detail-note>
+      <app-detail-note specificityattr [inputNote]="note" [isNotesView]="true" ></app-detail-note>
     </a>
   </div>
 </div>

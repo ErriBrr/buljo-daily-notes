@@ -1,8 +1,6 @@
 .note-form {
   margin-top: 50px;
   margin-bottom: 20px;
-  margin-left: 50px;
-  margin-right: 50px;
 }
 textarea {
   height: 180px;
@@ -23,4 +21,8 @@ p {
 .flex-div {
   margin-left: 25%;
   margin-top: 10%;
+}
+
+form {
+  padding: 16px;
 }
