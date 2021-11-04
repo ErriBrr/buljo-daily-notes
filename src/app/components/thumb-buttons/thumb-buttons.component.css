@@ -8,6 +8,8 @@
   bottom: 10px !important;
   left: auto !important;
   position: fixed !important;
+  margin-right: 30px;
+  margin-bottom: 80px;
 }
 .vertical-align-icon { 
   vertical-align: middle !important; 
