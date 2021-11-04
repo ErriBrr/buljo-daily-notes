@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '../../interfaces/note';
 import { NoteService } from '../../services/note.service';
-import { DailyNoteService } from '../../services/daily-note.service';
 import { BuljoNoteService } from 'src/app/services/buljo-note.service';
-import { BuljoLine } from 'src/app/interfaces/buljo-line';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DictSvg } from 'src/app/interfaces/dict';
@@ -22,18 +20,12 @@ export class NotesComponent implements OnInit {
   onSelect(note: Note): void {
     this.selectedNote = note;
   }
-
   getNotes(): void {
     this.noteService.getNotes().subscribe(notes => this.notes = notes);
   }
 
-  buljoLines(noteText: string): BuljoLine[] {
-    return  this.buljoNoteService.generateBuljoLines(noteText);
-  }
-
   constructor(
     private noteService: NoteService,
-    private dailyNoteService: DailyNoteService,
     private buljoNoteService: BuljoNoteService,
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer
@@ -47,5 +39,4 @@ export class NotesComponent implements OnInit {
   ngOnInit(): void {
     this.getNotes();
   }
-
 }

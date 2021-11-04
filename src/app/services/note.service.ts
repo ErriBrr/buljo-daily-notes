@@ -21,7 +21,6 @@ export class NoteService {
   }
 
   getLocalStorageNotes(): void {
-    console.log('test 3');
     this.notes = this.localStorageService.get('notes')!.map(item => item = {
       title: item.title,
       date: new Date(item.date),

@@ -57,3 +57,7 @@ input {
 p {
   white-space: pre-line;
 }
+:host app-detail-note[specificityattr] ::ng-deep mat-card {
+  margin-left: 50px;
+  margin-right: 50px;
+}
