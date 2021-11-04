@@ -61,3 +61,8 @@ p {
   margin-left: 50px;
   margin-right: 50px;
 }
+.right-align {
+  float:right;
+  margin-right: 2em;
+  margin-top: 1em;
+}
