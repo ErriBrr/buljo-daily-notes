@@ -12,6 +12,7 @@ export class NoteService {
   private localStorageService = new LocalStorageService;
   private importexportCsvService = new ImportExportCsvService;
   private notes: Note[] = [];
+  private idsList : string[] = [];
 
   delete(note: Note): void {
     //this.notes = this.notes.filter(obj => obj !== note);
@@ -28,8 +29,30 @@ export class NoteService {
     return of(this.notes);
   }
 
+  private generateId(length: number): string {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+  }
+
+  private askId(): string {
+    let id = '';
+    while (this.idsList.includes(id)) {
+      id = this.generateId(10);
+    }
+    this.idsList.push(id);
+    return id;
+  }
+
   getLocalStorageNotes(): void {
+    this.idsList = [];
+    this.idsList.push('');
     this.notes = this.localStorageService.get('notes')!.map(item => item = {
+      id: item.id,
       title: item.title,
       date: new Date(item.date),
       archive: item.archive,
@@ -37,8 +60,10 @@ export class NoteService {
     });
   }
 
-  pushNewNote(date: Date): void {
+  pushNewNote(date: Date): string {
+    const id = this.askId();
     const note: Note = {
+      id: id,
       title: '',
       date: date,
       archive: false,
@@ -46,22 +71,33 @@ export class NoteService {
     };
     this.notes.push(note);
     this.localStorageService.set('notes', this.notes);
+    return id;
   }
 
   majNote(): void {
     this.localStorageService.set('notes', this.notes);
   }
 
-  createNewTodayNote(): void {
+  createNewTodayNote(): string {
     const today = new Date();
+    let id: string = '0000000000';
     if ( this.notes == []) { 
-      this.pushNewNote(today);
+      id = this.pushNewNote(today);
     } else if (!this.notes.some(e => e.date.toDateString() === today.toDateString())) {
-      this.pushNewNote(today);
+      id = this.pushNewNote(today);
     }
+    return id;
   }
 
-  getNote(date: string): Observable<Note> {
+  getNoteById(id: string): Observable<Note> {
+    if (id==='plus') {
+      id = this.createNewTodayNote();
+    }
+    const note = this.notes.find(n => n.id === id)!;
+    return of(note);
+  }
+
+  getNoteByDate(date: string): Observable<Note> {
     if (date === new Date().toDateString()) {
       this.createNewTodayNote();
     }

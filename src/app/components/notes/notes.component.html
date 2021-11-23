@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="deleteNote(note)" *ngIf="!note.archive" class="right-align">
       <mat-icon color="alert" aria-hidden="false">cancel</mat-icon>
     </button>
-    <a *ngIf="!note.archive" routerLink="/notes/{{note.date.toDateString()}}">
+    <a *ngIf="!note.archive" routerLink="/notes/{{note.id}}">
       <app-detail-note specificityattr [inputNote]="note" [isNotesView]="true" ></app-detail-note>
     </a>
   </div>
