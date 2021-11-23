@@ -60,8 +60,10 @@ export class NoteService {
     });
   }
 
-  pushNewNote(date: Date): void {
+  pushNewNote(date: Date): string {
+    const id = this.askId();
     const note: Note = {
+      id: id,
       title: '',
       date: date,
       archive: false,
@@ -69,24 +71,27 @@ export class NoteService {
     };
     this.notes.push(note);
     this.localStorageService.set('notes', this.notes);
+    return id;
   }
 
   majNote(): void {
     this.localStorageService.set('notes', this.notes);
   }
 
-  createNewTodayNote(): void {
+  createNewTodayNote(): string {
     const today = new Date();
+    let id: string = '0000000000';
     if ( this.notes == []) { 
-      this.pushNewNote(today);
+      id = this.pushNewNote(today);
     } else if (!this.notes.some(e => e.date.toDateString() === today.toDateString())) {
-      this.pushNewNote(today);
+      id = this.pushNewNote(today);
     }
+    return id;
   }
 
   getNoteById(id: string): Observable<Note> {
-    if (!id) {
-      this.createNewTodayNote();
+    if (id==='plus') {
+      id = this.createNewTodayNote();
     }
     const note = this.notes.find(n => n.id === id)!;
     return of(note);
