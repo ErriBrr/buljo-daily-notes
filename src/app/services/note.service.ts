@@ -52,7 +52,7 @@ export class NoteService {
     this.idsList = [];
     this.idsList.push('');
     this.notes = this.localStorageService.get('notes')!.map(item => item = {
-      id: this.askId(),
+      id: item.id,
       title: item.title,
       date: new Date(item.date),
       archive: item.archive,
