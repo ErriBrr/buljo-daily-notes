@@ -4,13 +4,12 @@ import { Observable, of } from 'rxjs';
 import { Note } from '../interfaces/note';
 import { LocalStorageService } from './local-storage.service';
 import { ImportExportCsvService } from './importexport-csv.service';
+import { IdsService } from './ids.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
-  private localStorageService = new LocalStorageService;
-  private importexportCsvService = new ImportExportCsvService;
   private notes: Note[] = [];
   private idsList : string[] = [];
 
@@ -29,25 +28,6 @@ export class NoteService {
     return of(this.notes);
   }
 
-  private generateId(length: number): string {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-   }
-   return result;
-  }
-
-  private askId(): string {
-    let id = '';
-    while (this.idsList.includes(id)) {
-      id = this.generateId(10);
-    }
-    this.idsList.push(id);
-    return id;
-  }
-
   getLocalStorageNotes(): void {
     this.idsList = [];
     this.idsList.push('');
@@ -61,7 +41,7 @@ export class NoteService {
   }
 
   pushNewNote(date: Date): string {
-    const id = this.askId();
+    const id = this.idsService.askId();
     const note: Note = {
       id: id,
       title: '',
@@ -69,7 +49,9 @@ export class NoteService {
       archive: false,
       text: ''
     };
+    this.notes = this.notes.reverse();
     this.notes.push(note);
+    this.notes = this.notes.reverse();
     this.localStorageService.set('notes', this.notes);
     return id;
   }
@@ -79,7 +61,7 @@ export class NoteService {
   }
 
   isActiveTodayNote(e: Note, today: Date): boolean {
-    return e.date.toDateString() === today.toDateString() && e.archive === false;
+    return e.date.toDateString() === today.toDateString() && !e.archive;
   }
 
   createNewTodayNote(): string {
@@ -122,5 +104,9 @@ export class NoteService {
     this.importexportCsvService.exportCSV(this.notes);
   }
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService,
+    private importexportCsvService: ImportExportCsvService,
+    private idsService: IdsService
+  ) { }
 }

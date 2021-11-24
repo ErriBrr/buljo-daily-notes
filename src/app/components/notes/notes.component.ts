@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Note } from '../../interfaces/note';
 import { NoteService } from '../../services/note.service';
 import { BuljoNoteService } from 'src/app/services/buljo-note.service';
@@ -26,6 +27,10 @@ export class NotesComponent implements OnInit {
   deleteNote(note: Note): void {
     this.noteService.delete(note);
   }
+  getActiveNotes(): Note[] {
+    // return this.notes.filter(e => !e.archive).reverse();
+    return this.notes;
+  }
 
   constructor(
     private noteService: NoteService,
@@ -41,5 +46,9 @@ export class NotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNotes();
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
   }
 }

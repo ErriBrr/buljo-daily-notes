@@ -4,6 +4,7 @@ import { unparse, parse } from 'papaparse';
 
 import { Note } from '../interfaces/note';
 import { LocalStorageService } from './local-storage.service';
+import { IdsService } from './ids.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class ImportExportCsvService {
   addToLocalStorage(csvJson: any[]) {
     let notesJson: Note[];
     notesJson = csvJson.map(e => e = {
-      id: e['id'],
+      id: e['id'] ? e['id'] : this.idsService.askId(),
       title: e['title'],
       date: e['date'],
       archive: e['archive'],
@@ -48,5 +49,7 @@ export class ImportExportCsvService {
     reader.readAsText(file);
   }
 
-  constructor() { }
+  constructor(
+    private idsService: IdsService
+  ) { }
 }

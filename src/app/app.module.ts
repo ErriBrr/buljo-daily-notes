@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailNoteComponent } from './components/detail-note/detail-note.component';
@@ -51,6 +52,7 @@ import { DialogHomepageComponent } from './components/dialog-homepage/dialog-hom
     MatInputModule,
     MatMenuModule,
     FlexLayoutModule,
+    DragDropModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
