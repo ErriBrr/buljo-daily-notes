@@ -1,7 +1,7 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid" class="notes" >
   <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box" *ngFor="let note of getActiveNotes()" (click)="onSelect(note)" [class.selected]="note === selectedNote" cdkDrag>
-      <a routerLink="/notes/{{note.id}}">
+      <a routerLink="/notes/{{note._id}}">
         <h4>{{note.title}}</h4><p>{{note.date.toDateString()}}</p>
       </a>
     </div>
