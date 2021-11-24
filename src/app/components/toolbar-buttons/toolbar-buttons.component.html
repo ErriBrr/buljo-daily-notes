@@ -1,10 +1,8 @@
 <button mat-icon-button color="primary" [matMenuTriggerFor]="aboveMenu">
     <mat-icon>archive</mat-icon>
 </button>
+<input type='file' accept="*.csv" style="display:none" #fileInput (change)="importFile($event)">
 <mat-menu #aboveMenu="matMenu">
     <button mat-menu-item (click)=exportCsvToFile()>Export</button>
-    <button mat-menu-item [matMenuTriggerFor]="nestedMenu">Import</button>
-</mat-menu>
-<mat-menu #nestedMenu="matMenu">
-    <input mat-menu-item type='file' (change)="importFile($event)">
+    <button mat-menu-item (click)=importCsvToFile()>Import</button>
 </mat-menu>
