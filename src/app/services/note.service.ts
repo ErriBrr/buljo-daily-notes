@@ -11,7 +11,6 @@ import { IdsService } from './ids.service';
 })
 export class NoteService {
   private notes: Note[] = [];
-  private idsList : string[] = [];
 
   delete(note: Note): void {
     //this.notes = this.notes.filter(obj => obj !== note);
@@ -29,14 +28,14 @@ export class NoteService {
   }
 
   getLocalStorageNotes(): void {
-    this.idsList = [];
-    this.idsList.push('');
-    this.notes = this.localStorageService.get('notes')!.map(item => item = {
+    this.notes = this.localStorageService.get('notes')!.map(item => {
+      return {
       id: item.id,
       title: item.title,
       date: new Date(item.date),
       archive: item.archive,
       text: item.text
+      };
     });
   }
 
