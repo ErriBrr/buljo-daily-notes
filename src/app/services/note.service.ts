@@ -78,13 +78,21 @@ export class NoteService {
     this.localStorageService.set('notes', this.notes);
   }
 
+  isActiveTodayNote(e: Note, today: Date): boolean {
+    return e.date.toDateString() === today.toDateString() && e.archive === false;
+  }
+
   createNewTodayNote(): string {
     const today = new Date();
-    let id: string = '0000000000';
+    let id: string;
     if ( this.notes == []) { 
       id = this.pushNewNote(today);
-    } else if (!this.notes.some(e => e.date.toDateString() === today.toDateString())) {
-      id = this.pushNewNote(today);
+    } else {
+      if (!this.notes.some(e => this.isActiveTodayNote(e, today))) {
+        id = this.pushNewNote(today);
+      } else {
+        id = this.notes.find(e => this.isActiveTodayNote(e, today))?.id!;
+      }
     }
     return id;
   }

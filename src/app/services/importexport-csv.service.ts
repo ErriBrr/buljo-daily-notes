@@ -24,6 +24,7 @@ export class ImportExportCsvService {
   addToLocalStorage(csvJson: any[]) {
     let notesJson: Note[];
     notesJson = csvJson.map(e => e = {
+      id: e['id'],
       title: e['title'],
       date: e['date'],
       archive: e['archive'],

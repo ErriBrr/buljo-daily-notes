@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material/icon';
 
 import { Note } from '../../interfaces/note';
 import { BuljoLine } from '../../interfaces/buljo-line';
 import { DailyNoteService } from '../../services/daily-note.service';
-import { NoteService } from '../../services/note.service';
 import { BuljoNoteService } from '../../services/buljo-note.service';
 import { DictSvg } from '../../interfaces/dict';
 
@@ -19,13 +18,6 @@ export class DetailNoteComponent implements OnInit {
 
   @Input() inputNote?: Note;
   @Input() isNotesView!: boolean;
-  detailNote: Note | undefined;
-
-  getNote(input: Note): void {
-    const date = input.date.toDateString();
-    // console.log(date);
-    this.noteService.getNoteByDate(date).subscribe(n => this.detailNote = n);
-  }
 
   formatDate(note: Note): string {
     return this.dailyNoteService.formatDate(note.date);
@@ -41,7 +33,6 @@ export class DetailNoteComponent implements OnInit {
 
   constructor(
     private dailyNoteService: DailyNoteService,
-    private noteService: NoteService,
     private buljoNoteService: BuljoNoteService,
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer
@@ -52,10 +43,6 @@ export class DetailNoteComponent implements OnInit {
       }
     }
 
-  ngOnInit(): void {
-    if(this.inputNote) {
-      this.getNote(this.inputNote);
-    }
-  }
+  ngOnInit(): void { }
 
 }
