@@ -1,4 +1,7 @@
-<button mat-icon-button color="primary" [matMenuTriggerFor]="aboveMenu">
+<mat-icon color="accent">brightness_5</mat-icon>
+<mat-slide-toggle color="warn" [formControl]="toggleControl"></mat-slide-toggle>
+<mat-icon color="accent">bedtime</mat-icon>
+<button mat-icon-button color="warn" [matMenuTriggerFor]="aboveMenu">
     <mat-icon>archive</mat-icon>
 </button>
 <input type='file' accept="*.csv" style="display:none" #fileInput (change)="importFile($event)">
