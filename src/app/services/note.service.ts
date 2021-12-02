@@ -52,7 +52,7 @@ export class NoteService {
     this.idsList = [];
     this.idsList.push('');
     this.notes = this.localStorageService.get('notes')!.map(item => item = {
-      id: item.id,
+      id: item.id ? item.id : this.askId(),
       title: item.title,
       date: new Date(item.date),
       archive: item.archive,
@@ -85,14 +85,11 @@ export class NoteService {
   createNewTodayNote(): string {
     const today = new Date();
     let id: string;
-    if ( this.notes == []) { 
+    const hasNoNewNote = (this.notes == [] || !this.notes.some(e => this.isActiveTodayNote(e, today)));
+    if (hasNoNewNote) { 
       id = this.pushNewNote(today);
     } else {
-      if (!this.notes.some(e => this.isActiveTodayNote(e, today))) {
-        id = this.pushNewNote(today);
-      } else {
-        id = this.notes.find(e => this.isActiveTodayNote(e, today))?.id!;
-      }
+      id = this.notes.find(e => this.isActiveTodayNote(e, today))?.id!;
     }
     return id;
   }
@@ -101,7 +98,7 @@ export class NoteService {
     if (id==='plus') {
       id = this.createNewTodayNote();
     }
-    const note = this.notes.find(n => n.id === id)!;
+    const note = this.notes.find(n => n.id?.toString() === id)!;
     return of(note);
   }
 
