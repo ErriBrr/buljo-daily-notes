@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { NoteService } from '../../services/note.service';
 
 @Component({
@@ -7,6 +8,11 @@ import { NoteService } from '../../services/note.service';
   styleUrls: ['./toolbar-buttons.component.css']
 })
 export class ToolbarButtonsComponent implements OnInit {
+  toggleControl = new FormControl(false);
+
+  @Input()
+  classNameCallback!: (isDarkMode: boolean) => void;
+  
   @ViewChild('fileInput')
   fileInput: any;
   
@@ -29,6 +35,9 @@ export class ToolbarButtonsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.toggleControl.valueChanges.subscribe((isDarkMode:boolean) => {
+      this.classNameCallback(isDarkMode);
+    });
   }
 
 }

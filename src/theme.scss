@@ -1,37 +1,34 @@
-@use '~@angular/material' as mat;
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
 
 @include mat.core();
 
-$my-primary: mat.define-palette(mat.$brown-palette, 300);
-$my-accent: mat.define-palette(mat.$deep-orange-palette, 300);
+$light-primary: mat.define-palette(mat.$lime-palette, 500, 100, 900, 600);
+$light-accent: mat.define-palette(mat.$deep-orange-palette, 500, 100, 900, 600);
+$light-warn: mat.define-palette(mat.$blue-gray-palette, 500, 100, 900, 600);
 
-$my-theme: mat.define-light-theme((
- color: (
-   primary: $my-primary,
-   accent: $my-accent,
- )
+$dark-primary: mat.define-palette(mat.$blue-gray-palette, 500, 100, 900, 600);
+$dark-accent: mat.define-palette(mat.$deep-orange-palette, 500, 100, 900, 600);
+$dark-warn: mat.define-palette(mat.$pink-palette, 500, 100, 900, 600);
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $light-warn
+  )
+));
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn
+  )
 ));
 
-$my-theme-2: mat.define-light-theme((
- color: (
-   primary: $my-accent,
-   accent: $my-primary,
- )
-));
-
-@function mat-set-background($theme, $backgroundColor) {
-    $palette-color : map-get($theme, color);
-    $background: map-get($palette-color, background);
-    $background: map_merge($background, (background: $backgroundColor));
-    $palette-color: map_merge($palette-color, (background: $background));
-    @return map_merge($theme, (color: $palette-color));
-  }
-$background-color: #a71212;
-$my-theme: mat-set-background($my-theme, $background-color);
-
-@include mat.all-component-themes($my-theme);
-@include mat.toolbar-theme($my-theme);
-@include mat.button-theme($my-theme);
-@include mat.card-theme($my-theme);
-@include mat.progress-bar-theme($my-theme-2);
-@include mat.core($my-theme);
+@include mat.all-component-themes($light-theme);
+.darkMode {
+  @include mat.all-component-themes($dark-theme);
+}

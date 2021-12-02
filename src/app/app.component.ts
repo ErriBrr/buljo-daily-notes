@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogHomepageComponent } from './components/dialog-homepage/dialog-homepage.component';
 
@@ -9,6 +9,10 @@ import { DialogHomepageComponent } from './components/dialog-homepage/dialog-hom
 })
 export class AppComponent implements OnInit {
   title = 'Buljo daily notes';
+  
+  @HostBinding('class')
+  className = '';
+
   constructor(public dialog: MatDialog) {}
   
   openDialog() {
@@ -17,5 +21,10 @@ export class AppComponent implements OnInit {
   
   ngOnInit(): void {
     this.openDialog();
+  }
+
+  callbackClassName = (isDarkMode: boolean) => {
+    const darkClassName = 'darkMode';
+    this.className = isDarkMode ? darkClassName : '';
   }
 }
