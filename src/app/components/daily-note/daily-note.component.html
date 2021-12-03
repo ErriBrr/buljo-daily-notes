@@ -14,7 +14,11 @@
         </form>
     </div>
     <div class="flex-div">
-        <app-detail-note [inputNote]="note" [isNotesView]="false" ></app-detail-note>
+        <mat-card>
+            <mat-card-content>
+            <app-detail-note [inputNote]="note" [isNotesView]="false" ></app-detail-note>
+            </mat-card-content> 
+        </mat-card>
     </div>
 </div>
 <app-buttons [type]="'goback'" ></app-buttons>

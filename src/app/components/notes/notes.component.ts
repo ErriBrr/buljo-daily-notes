@@ -5,6 +5,7 @@ import { BuljoNoteService } from 'src/app/services/buljo-note.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DictSvg } from 'src/app/interfaces/dict';
+import { DailyNoteService } from 'src/app/services/daily-note.service';
 
 @Component({
   selector: 'app-notes',
@@ -26,8 +27,16 @@ export class NotesComponent implements OnInit {
   deleteNote(note: Note): void {
     this.noteService.delete(note);
   }
+  
+  formatDate(note: Note): string {
+    return this.dailyNoteService.formatDate(note.date);
+  }
+  isTodayNote(note: Note): boolean {
+    return this.dailyNoteService.isTodayNote(note);
+  }
 
   constructor(
+    private dailyNoteService: DailyNoteService,
     private noteService: NoteService,
     private buljoNoteService: BuljoNoteService,
     iconRegistry: MatIconRegistry,

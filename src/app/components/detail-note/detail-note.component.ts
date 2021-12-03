@@ -19,20 +19,11 @@ export class DetailNoteComponent implements OnInit {
   @Input() inputNote?: Note;
   @Input() isNotesView!: boolean;
 
-  formatDate(note: Note): string {
-    return this.dailyNoteService.formatDate(note.date);
-  }
-
-  isTodayNote(note: Note): boolean {
-    return this.isNotesView && this.dailyNoteService.isTodayNote(note);
-  }
-
   buljoLines(noteText: string): BuljoLine[] {
     return  this.buljoNoteService.generateBuljoLines(noteText);
   }
 
   constructor(
-    private dailyNoteService: DailyNoteService,
     private buljoNoteService: BuljoNoteService,
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer

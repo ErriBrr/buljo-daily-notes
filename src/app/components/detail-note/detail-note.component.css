@@ -1,21 +1,7 @@
 p {
     white-space: pre-line;
-  }
-
-mat-card {
-  height: 200px;
-  margin-top: 50px;
-  margin-bottom: 20px;
 }
-
-mat-card-content {
-height: 135px;
-width: 220px;
-max-height: 135px;
-overflow: scroll;
-overflow-x: hidden;
-overflow-y: auto;
-}
-mat-card-title {
-height: 20px;
+.right-align {
+  float:right;
+  height: -15px;
 }

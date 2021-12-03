@@ -1,11 +1,21 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid" class="notes" >
   <div *ngFor="let note of notes.reverse()" (click)="onSelect(note)" [class.selected]="note === selectedNote">
-    <button color="primary" mat-icon-button (click)="deleteNote(note)" *ngIf="!note.archive" class="right-align">
-      <mat-icon color="alert" aria-hidden="false">cancel</mat-icon>
-    </button>
-    <a *ngIf="!note.archive" routerLink="/notes/{{note.id}}">
-      <app-detail-note specificityattr [inputNote]="note" [isNotesView]="true" ></app-detail-note>
-    </a>
+    <mat-card *ngIf="!note.archive">
+        <mat-card-title>
+          {{this.formatDate(note)}}
+          <button style="margin-top:-10px;margin-right:-5px;" (click)="deleteNote(note)" class="right-align" mat-icon-button>
+            <mat-icon color="warn" style="font-size:36px">check</mat-icon>
+          </button>
+        </mat-card-title>
+        <a routerLink="/notes/{{note.id}}">
+          <mat-card-content>
+              <app-detail-note specificityattr [inputNote]="note" [isNotesView]="true" ></app-detail-note>
+          </mat-card-content>
+          <mat-card-footer *ngIf="isTodayNote(note)">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </mat-card-footer>          
+        </a>
+      </mat-card>
   </div>
 </div>
 <app-buttons></app-buttons>

@@ -24,16 +24,9 @@
     background-color: black;
     color: white;
 }
-.notes a {
+a, a:hover, a:focus, a:active {
   text-decoration: none;
-}
-.notes a:hover {
-  color: #2c3a41;
-  background-color: #e6e6e6;
-}
-.notes a:active {
-  background-color: #525252;
-  color: #fafafa;
+  color: inherit;
 }
 .notes .badge {
     display: inline-block;
@@ -65,4 +58,23 @@ p {
   float:right;
   margin-right: 2em;
   margin-top: 1em;
+}
+mat-card {
+  height: 200px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+mat-card-content {
+height: 135px;
+width: 220px;
+max-height: 135px;
+overflow: scroll;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+mat-card-footer {
+margin-top:47px;
+}
+mat-card-title {
+height: 20px;
 }
