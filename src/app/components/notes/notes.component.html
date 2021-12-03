@@ -4,7 +4,7 @@
         <mat-card-title>
           {{this.formatDate(note)}}
           <button style="margin-top:-10px;margin-right:-5px;" (click)="deleteNote(note)" class="right-align" mat-icon-button>
-            <mat-icon color="warn" style="font-size:36px">check</mat-icon>
+            <mat-icon color="warn" style="font-size:36px">undo</mat-icon>
           </button>
         </mat-card-title>
         <a routerLink="/notes/{{note.id}}">

@@ -6,6 +6,13 @@
 </button>
 <input type='file' accept="*.csv" style="display:none" #fileInput (change)="importFile($event)">
 <mat-menu #aboveMenu="matMenu">
-    <button mat-menu-item (click)=exportCsvToFile()>Export</button>
-    <button mat-menu-item (click)=importCsvToFile()>Import</button>
+    <button mat-menu-item (click)=exportCsvToFile() style="text-align: center;">
+        <mat-icon>output</mat-icon>
+    </button>
+    <button mat-menu-item (click)=importCsvToFile() style="text-align: center;">
+        <mat-icon>input</mat-icon>
+    </button>
+    <button mat-menu-item style="text-align: center;">
+        <mat-icon>restore_from_trash</mat-icon>
+    </button>
 </mat-menu>
